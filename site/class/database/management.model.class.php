@@ -7,7 +7,7 @@
 * if no changes are made, it is likely that the connection will never be established
 */
 
-define('DB_SERVER','192.168.0.193:3308');
+define('DB_SERVER','192.168.0.193:3306');
 define('DB_USERNAME','root');
 define('DB_PASSWORD','root');
 define('DB_DATABASE', 'test');
