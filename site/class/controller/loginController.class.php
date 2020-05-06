@@ -43,8 +43,8 @@ class LoginController
         } else if(!empty($IJT_SQL) && empty($NO_IJT_SQL)) {
             // injection
             $token = $this->loginModel->getTokenIJT_SQL();
-            echo "<script>alert('Your token sql injection -> $token');</script>";
-            $this->authApproved($IJT_SQL);
+            echo "Your token sql injection -> $token ";
+            //$this->authApproved($IJT_SQL);
         } 
     }
     

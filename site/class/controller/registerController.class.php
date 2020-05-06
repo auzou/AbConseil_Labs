@@ -47,7 +47,7 @@ class RegisterController
             if(strpos($this->userName, '<script>') !== false)
             {
                 $this->userName = htmlentities($this->userName);
-                $alert = '<script>alert("Your token XSS -> '.$this->registerModel->getTokenXSS().'")</script>';
+                $alert = 'Your token XSS -> '.$this->registerModel->getTokenXSS();
                 echo $alert;
                 //$this->userName = insertFlag($this->userName, '<script>', $alert);
             }
@@ -56,7 +56,7 @@ class RegisterController
             
             require_once(dirname(__FILE__).'../../session.class.php');
             Session::sessionStart($this->registerModel->getUser($this->userName));
-            $this->authApproved();
+            //$this->authApproved();
         } else {
             $this->authNotApproved();
         }
