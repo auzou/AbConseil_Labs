@@ -43,20 +43,24 @@ class LoginController
         } else if(!empty($IJT_SQL) && empty($NO_IJT_SQL)) {
             // injection
             $token = $this->loginModel->getTokenIJT_SQL();
-            echo "Your token sql injection -> $token ";
-            //$this->authApproved($IJT_SQL);
+            $this->loginModel->setFlagView();
+            $this->authApproved($IJT_SQL, true);
         } 
     }
     
-    public function authApproved($data)
+    public function authApproved($data, $flag = false)
     {
         
         require_once(dirname(__FILE__).'../../session.class.php');
-        if(Session::sessionStart($data))
+        $session = Session::sessionStart($data);
+        if($session && $flag == false)
         {
             header('Location: home');
+        } else if($session && $flag) {
+            header('Location: flag');
         } else {
-            $this->authApproved();
+            // error
+            //$this->authApproved();
         }
     }
     public function authNotApproved()

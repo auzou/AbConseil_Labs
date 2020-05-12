@@ -28,11 +28,22 @@
   </div>
   <?php endif ?>
   
+   <?php if($value->flag_view == 0) : ?>
+    <div id="flag" class="list-group-item list-group-item-action flex-column align-items-start" style="cursor: pointer">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 id="title" value="List group item heading" class="mb-1">You did not find any security vulnerabilities</h5>
+      <small>Click to copy</small>
+    </div>
+    <p id="copy" class="mb-1">No pain no gain ...</p>
+    <small class="text-muted">Sorry</small>
+  </div>
+   <?php endif ?>
+  
   <?php endforeach ?>
   
   <?php endif ?>
   
-  <?php if(!isset($flag) || !empty($flag)) :?> 
+  <?php if(!isset($flag) || empty($flag)) :?> 
   <div id="flag" class="list-group-item list-group-item-action flex-column align-items-start" style="cursor: pointer">
     <div class="d-flex w-100 justify-content-between">
       <h5 id="title" value="List group item heading" class="mb-1">You did not find any security vulnerabilities</h5>
@@ -44,8 +55,15 @@
   <?php endif ?>
  
 </div>
+<style>
+#flags_list {
+    margin-bottom: 10%;
+}
+</style>
 
 <script>
+// TODO : move asset -> .js/.min.js
+// TODO : create a copy error and manage of authorisation
 jQuery(document).ready(function(){
     var flagEach = jQuery('#flags_list #flag');
     var flagList = jQuery('#flags_List');
@@ -62,7 +80,7 @@ jQuery(document).ready(function(){
         });
     }
     _copy = function (id) {
-            navigator.clipboard.writeText(jQuery(id).find('#title').text()+'->'+jQuery(id).find('#copy').text()).then(() => {
+            navigator.clipboard.writeText(jQuery(id).find('#title').text()+' -> '+jQuery(id).find('#copy').text()).then(() => {
         }).catch(err => {
             alert('Could not copy text: ', err);
         });

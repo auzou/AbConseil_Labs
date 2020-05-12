@@ -56,6 +56,10 @@ class RegisterModel
         ];
 
     }
+    public function setFlagView()
+    {
+        Management::updateSet('flags', 'flag_view', '1', 'flag_name', 'XSS');
+    }
     
 }
 $registerModel = new RegisterModel();

@@ -43,28 +43,32 @@ class RegisterController
     {
         if(!$this->registerModel->userIsExist(htmlentities($this->userName)))
         {
-            
+            $flag = false;
             if(strpos($this->userName, '<script>') !== false)
             {
-                $this->userName = htmlentities($this->userName);
-                $alert = 'Your token XSS -> '.$this->registerModel->getTokenXSS();
-                echo $alert;
-                //$this->userName = insertFlag($this->userName, '<script>', $alert);
+                $this->registerModel->setFlagView();
+                $flag = true;
             }
+            $this->userName = htmlentities($this->userName);
             $this->userPassword = $this->encryptePassword($this->userPassword);      
             $this->registerModel->saveRegister($this->getDataArray());
             
             require_once(dirname(__FILE__).'../../session.class.php');
             Session::sessionStart($this->registerModel->getUser($this->userName));
-            //$this->authApproved();
+            $this->authApproved($flag);
         } else {
             $this->authNotApproved();
         }
     }
 
-    public function authApproved()
+    public function authApproved($flag = false)
     {
-        header('Location: home');
+        if($flag)
+        {   
+            header('Location: flag');
+        } else {
+            header('Location: home');
+        }
     }
     public function authNotApproved()
     {

@@ -17,7 +17,6 @@
 
     Management::createDatabase();
     Management::createBase();
-     
     require_once(dirname(__FILE__).'/class/flagsLoader.class.php');
      
     FlagsLoader::initInstance();

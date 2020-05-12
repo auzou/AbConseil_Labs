@@ -226,9 +226,11 @@ class Management
             echo 'Connection failed '. $error->getMessage();
         } 
     }
+    
     /*
         sql injection
     */
+    
     static public function selectFrom_IJT_SQL($table, $column = '*', $where = '1=1', $db_name = null)
     {
         if(!(self::isConnected() && self::prefixExists()) && !empty($table))
@@ -304,12 +306,37 @@ class Management
             //print_r($db_bind->errorInfo());
             
         } else{
-            return false;
+            if(!empty($data) && !empty($column))
+            {
+                $db_bind = self::$db_connect->prepare('INSERT INTO '.self::$db_prefix.$table.'('.$column.') VALUE (:data)');
+                $db_bind->bindParam(':data', $data);
+                $db_bind->execute();
+            }
         }
     }
     
-    static public function updateSet()
+    
+    static public function updateSet($table, $column, $columnData, $where, $whereData, $db_name = null)
     {
+        if(!(self::isConnected() && self::prefixExists()) && !empty($table))
+        {
+           return false;
+        } 
+        
+        if(!is_array($db_name) && empty($db_name))
+        {
+            $db_name = self::$db_name;
+        }
+        self::useDatabase($db_name);
+        
+        if(!empty($column) && !empty($columnData) && !empty($where) && !empty($whereData))
+        {
+            $db_bind = self::$db_connect->prepare('UPDATE '.self::$db_prefix.$table.' SET '.$column.' = :columnData WHERE '.$where.' = :whereData');
+            $db_bind->bindParam(':columnData', $columnData);
+            $db_bind->bindParam(':whereData', $whereData);
+            $db_bind->execute();
+            //print_r($db_bind->errorInfo());
+        }
     }
     
 

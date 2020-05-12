@@ -57,6 +57,11 @@ class LoginModel
         ];
 
     }
+    
+    public function setFlagView()
+    {
+         Management::updateSet('flags', 'flag_view', '1', 'flag_name', 'IJT_SQL');
+    }
 }
 
 
