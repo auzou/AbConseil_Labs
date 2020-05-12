@@ -10,7 +10,7 @@
 define('DB_SERVER','127.0.0.1:3308');
 define('DB_USERNAME','root');
 define('DB_PASSWORD','root');
-define('DB_DATABASE', 'test');
+define('DB_DATABASE', 'my_lab_by_auzou');
 
 /*
 * WARNING: do not delete the comment below 
@@ -128,7 +128,7 @@ class Management
             
         fwrite($ptr, $content);
         fclose($ptr); 
-        self::$db_prefix = $prefix;   
+        self::$db_prefix = $prefix;      
     }
     
     static public function createDatabase()

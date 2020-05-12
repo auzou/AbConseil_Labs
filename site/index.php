@@ -13,6 +13,7 @@
     Management::createDatabase();
     Management::createBase();
     
+    // this part shouldn't be here
     if(isset($_GET['page']))
     {
         // inclusion locale and externe
@@ -25,9 +26,12 @@
                 Management::updateSet('flags', 'flag_view', '1', 'flag_name', 'INC_EXT');
                 header('Location: flag');
             } else if(strpos($data, '/') !== false) {
+                // local
                 Management::updateSet('flags', 'flag_view', '1', 'flag_name', 'INC_LOCAL');
                 header('Location: flag');    
             } else {
+                // unknown (the site doesn't work like that)
+                // the site works by inclusion of code by part
                 header('Location: home');   
             }
         }

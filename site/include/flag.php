@@ -23,8 +23,10 @@
             </p>
         </a>
     </div>
-    <div class="col-sm" style="margin-top:25px; text-align: center;">
-       
+    <div id="warning" class="col-sm" style="margin-top:25px; text-align: center; color:red;">
+        <p>  
+            BE CAREFUL some vulnerabilities are not yet implemented
+        </p>
     </div>
     <div class="col-sm-2">
        <a href="#" style="padding:0;margin:0;">
@@ -87,6 +89,7 @@
 <style>
 #flags_list {
     margin-bottom: 10%;
+    overflow: hidden;
 }
 </style>
 
@@ -94,6 +97,11 @@
 // TODO : move asset -> .js/.min.js
 // TODO : create a copy error and manage of authorisation
 jQuery(document).ready(function(){
+    window.setInterval(function() {
+        jQuery('#warning').fadeOut(500);
+        jQuery('#warning').fadeIn(1000);
+    }, 2500); 
+    
     var flagEach = jQuery('#flags_list #flag');
     var flagList = jQuery('#flags_List');
     
