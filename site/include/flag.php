@@ -7,13 +7,42 @@
     <h1 class="jumbotron-heading">FLAGS</h1>
     <img src="rcs/icon/jolly-roger.png" width="128" height="128" class="d-inline-block align-top" alt=""><img>
     <p class="lead text-muted">
-
+        
     </p>
 </div>
 </section>
 
-<div class="list-group" style="margin-left:10%; margin-right:10%;" id="flags_list">
 
+<div class="list-group" style="margin-left:10%; margin-right:10%;font-family: cursive; text-align:center;" id="flags_list">
+ <div class="row">
+    <div class="col-sm-2">
+       <a href="home" style="padding:0;margin:0;">
+            <img src="rcs/icon/back.png" width="64" height="64" class="d-inline-block align-left" alt="Go home !"><img>
+            <p class="mb-1">
+                Back to website
+            </p>
+        </a>
+    </div>
+    <div class="col-sm" style="margin-top:25px; text-align: center;">
+       
+    </div>
+    <div class="col-sm-2">
+       <a href="#" style="padding:0;margin:0;">
+            <img src="rcs/icon/doc_64.png" width="64" height="64" class="d-inline-block align-left" alt="Go home !"><img>
+        </a>
+    </div>
+    <div class="col-sm-2">
+       <a href="#" style="padding:0;margin:0;">
+            <img src="rcs/icon/word_64.png" width="64" height="64" class="d-inline-block align-left" alt="Go home !"><img>
+        </a>
+    </div>
+    <div class="col-sm-2">
+       <a href="#" style="padding:0;margin:0;">
+            <img src="rcs/icon/pdf_64.png" width="64" height="64" class="d-inline-block align-left" alt="Go home !"><img>
+        </a>
+    </div>
+  </div>
+  
   <?php if(isset($flag) && !empty($flag)) :?> 
   
   <?php foreach($flag as $value) : ?>
