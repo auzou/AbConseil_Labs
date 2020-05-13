@@ -35,6 +35,7 @@
                     <p>For more information -> <a href="https://doc.qt.io/qt-5/qcoreapplication.html">(QCoreApplication)</a></p>
                     <p><em>Example : </em><p>
                 </div>
+
                 <div class="code-area">
                 <p><span class="preprocessor">#include</span> <span class="preprocessor-name">&lt;QCoreApplication&gt;</span> </p>
                 <p><span class="type">int</span> <span class="object">main</span>(<span class="type">int</span> <span class="object-arg">argc</span>, <span class="type">char</span> *<span class="object-arg">argv</span>[])</p>

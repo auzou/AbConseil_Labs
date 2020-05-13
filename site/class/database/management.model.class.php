@@ -18,7 +18,7 @@ define('DB_DATABASE', 'my_lab_by_auzou');
 * without prefix the database will be lost or will not be created
 */
 
-define('DB_PREFIX', 'aPChLZ_');
+define('DB_PREFIX', 'RNONkB_');
 //define('DB_PREFIX', null); // autoChange
 
 require_once(dirname(__FILE__).'../../../function/prefix.function.php');
@@ -108,10 +108,9 @@ class Management
         {
             return;
         }
-        if(!$ptr = fopen($file, "r")) fclose($ptr); return;
-        if(!$content = fread($ptr, filesize($file))) fclose($ptr); return;
-            
-        fclose($ptr);
+        $openFile = fopen($file, 'r');
+        $content =  fread($openFile, filesize($file));
+        
             
         $content = explode(PHP_EOL, $content);
         $search = 'autoChange';
@@ -124,10 +123,9 @@ class Management
             } 
         }
         $content = implode(PHP_EOL, $content);
-        if(!$ptr = fopen($file, 'w')) fclose($ptr);  return;
+        $openFile = fopen($file, 'w');
             
-        fwrite($ptr, $content);
-        fclose($ptr); 
+        fwrite($openFile, $content);
         self::$db_prefix = $prefix;      
     }
     
@@ -168,16 +166,17 @@ class Management
         {
            return false;
         } 
-        
+
         try 
         {
             $admin = self::selectFrom('users','user_login','user_login','administrator');
-            if(empty($admin))
+            if(empty($admin->user_login))
             {
                 $schema = file_get_contents(dirname(__FILE__).'/schema.json');
                 $schema = json_decode($schema); 
             
-                self::useDatabase('test');
+                self::useDatabase(self::$db_name);
+                
             
                 if(!empty($schema->DATABASE))
                 {
@@ -238,7 +237,7 @@ class Management
            return false;
         } 
         
-        if(!is_array($db_name) && empty($db_name))
+        if(!is_array(self::$db_name) && empty(self::$db_name))
         {
             $db_name = self::$db_name;
         }
@@ -262,7 +261,7 @@ class Management
             $db_name = self::$db_name;
         }
         
-        self::useDatabase($db_name);
+        self::useDatabase(self::$db_name);
         $db_bind = self::$db_connect->prepare('SELECT '.$column.' FROM '.self::$db_prefix.$table.' WHERE '.$whereColumn.'=:whereData');       
         $db_bind->bindParam(':whereData', $whereData, PDO::PARAM_STR);
         $db_bind->execute();
@@ -282,7 +281,7 @@ class Management
         {
             $db_name = self::$db_name;
         }
-        self::useDatabase($db_name);
+        self::useDatabase(self::$db_name);
         
         if(empty($data) && empty($column))
         {
