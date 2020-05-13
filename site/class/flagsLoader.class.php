@@ -5,8 +5,9 @@ class FlagsLoader
     private static $instance = null;
     private $flagsData;
     
-    public function __construct($flagsName, $flagsValue) {
-        
+    public function __construct($flagsName, $flagsValue)
+    {
+        // TODO : move key in private folder
         $flagsPath = [  
                         '/class/controller/', 
                         '/class/controller/', 
