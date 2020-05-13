@@ -7,23 +7,26 @@
     <div class="col-sm-2">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <h2>Documentation</h2>
-            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
+            <a class="nav-link active" id="v-pills-base-tab" data-toggle="pill" href="#v-pills-base" role="tab" aria-controls="v-pills-base" aria-selected="true">
                 Base
             </a>
-            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+            <a class="nav-link" id="v-pills-client-tab" data-toggle="pill" href="#v-pills-client" role="tab" aria-controls="v-pills-client" aria-selected="false">
                 Client
             </a>
-            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+            <a class="nav-link" id="v-pills-event-tab" data-toggle="pill" href="#v-pills-event" role="tab" aria-controls="v-pills-event" aria-selected="false">
                 EventManager
             </a>
-            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+            <a class="nav-link" id="v-pills-message-tab" data-toggle="pill" href="#v-pills-message" role="tab" aria-controls="v-pills-message" aria-selected="false">
                 CreateMessage
+            </a>
+            <a class="nav-link" id="v-pills-link-tab" data-toggle="pill" href="#v-pills-link" role="tab" aria-controls="v-pills-link" aria-selected="false">
+                Helpful link
             </a>
         </div>
     </div>
     <div class="col-sm explanation">
         <div class="tab-content" id="v-pills-tabContent">
-            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+            <div class="tab-pane fade show active" id="v-pills-base" role="tabpanel" aria-labelledby="v-pills-base-tab">
                 <div class="doc">
                     <p>BotCpp works with the Qt framework.</p>
                     <p>Any Qt application must instantiate the QApplication singleton by passing it argc/argv.</p>
@@ -42,13 +45,16 @@
                 <p> }</p> 
                 </div>
             </div>
-            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <div class="tab-pane fade" id="v-pills-client" role="tabpanel" aria-labelledby="v-pills-client-tab">
                 Empty section
             </div>
-            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"> 
+            <div class="tab-pane fade" id="v-pills-event" role="tabpanel" aria-labelledby="v-pills-event-tab"> 
                 Empty section
             </div>
-            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+            <div class="tab-pane fade" id="v-pills-message" role="tabpanel" aria-labelledby="v-pills-message-tab">
+                 Empty section
+            </div>
+            <div class="tab-pane fade" id="v-pills-link" role="tabpanel" aria-labelledby="v-pills-link-tab">
                  Empty section
             </div>
         </div>
