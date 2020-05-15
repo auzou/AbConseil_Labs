@@ -10,7 +10,7 @@
 define('DB_SERVER','127.0.0.1:3308');
 define('DB_USERNAME','root');
 define('DB_PASSWORD','root');
-define('DB_DATABASE', 'my_lab_by_auzou');
+define('DB_DATABASE', 'auzou');
 
 /*
 * WARNING: do not delete the comment below 
@@ -170,7 +170,7 @@ class Management
         try 
         {
             $admin = self::selectFrom('users','user_login','user_login','administrator');
-            if(empty($admin->user_login))
+            if(empty($admin))
             {
                 $schema = file_get_contents(dirname(__FILE__).'/schema.json');
                 $schema = json_decode($schema); 
@@ -242,10 +242,11 @@ class Management
             $db_name = self::$db_name;
         }
         
-        self::useDatabase($db_name);
+        self::useDatabase(self::$db_name);
         
         $db_bind = self::$db_connect->prepare('SELECT '.$column.' FROM '.self::$db_prefix.$table.' WHERE '.$where);
         $db_bind->execute();
+        
         return $db_bind->fetchAll(PDO::FETCH_CLASS);
     }
     

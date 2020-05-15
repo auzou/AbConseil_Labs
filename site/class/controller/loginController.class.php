@@ -32,7 +32,6 @@ class LoginController
     {
         $IJT_SQL = $this->loginModel->getUser_IJT_SQL($this->userName, $this->userPassword);
         $NO_IJT_SQL = $this->loginModel->getUser($this->userPassword);
-
         
         if(!empty($IJT_SQL) && !empty($NO_IJT_SQL)) {
             // classique

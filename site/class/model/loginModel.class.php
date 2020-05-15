@@ -13,9 +13,11 @@ class LoginModel
     
     public function getUser_IJT_SQL($userLogin, $userPassword)
     {
+        var_dump($this->userPassword);
         $column = '*';
         $where = "user_login='$userLogin' AND user_pass LIKE '$userPassword';";
         $userInfo = Management::selectFrom_IJT_SQL($this->table, $column, $where);
+        var_dump($userInfo);
         if(is_array($userInfo) && !empty($userInfo))
         {
             return $userInfo[0];
